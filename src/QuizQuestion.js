@@ -28,8 +28,10 @@ class QuizQuestion extends Component {
             </section>
             <section className="buttons">
               <ul>
-             <QuizQuestionButton button_text={this.props.quiz_question.answer_options[0]}/>
-              </ul>
+              {this.props.quiz_question.answer_options.map((el,index)=>{
+                return <QuizQuestionButton key={index} button_text={el} clickHandler={this.handleClick.bind(this)}/>
+             })}
+            </ul>
             </section>
             {this.state.incorrectAnswer?<p className="error">Sorry, that's not right</p>:null}
           </main>
